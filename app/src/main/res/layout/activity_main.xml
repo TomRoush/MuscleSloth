@@ -29,7 +29,8 @@
         android:layout_height="72dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="5dp"
-        android:id="@+id/arc_floor_btn" />
+        android:id="@+id/arc_floor_btn"
+        android:onClick="startArcActivity"/>
 
     <Button
         android:text="@string/manage_work"
@@ -37,7 +38,8 @@
         android:layout_height="72dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="5dp"
-        android:id="@+id/manage_work_btn" />
+        android:id="@+id/manage_work_btn"
+        android:onClick="startWorkActivity"/>
 </LinearLayout>
 
 
