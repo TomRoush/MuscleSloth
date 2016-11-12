@@ -28,6 +28,8 @@ public class WorkoutWorkflowActivity extends Activity {
 
         SharedPreferences sharedPref = WorkoutWorkflowActivity.this.getPreferences(Context.MODE_PRIVATE);
         loadSavedWorkout(sharedPref);
+        Toast.makeText(this, Integer.toString(_workouts.size()), Toast.LENGTH_LONG).show();
+        _workouts.add(new Workout("banana"));
     }
 
     @Override
@@ -75,6 +77,6 @@ public class WorkoutWorkflowActivity extends Activity {
         Gson gson = new Gson();
         String workoutsJSON = gson.toJson(_workouts);
         prefsEditor.putString(_WORKOUTS, workoutsJSON);
-        prefsEditor.commit();
+        prefsEditor.apply();
     }
 }
