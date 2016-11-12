@@ -1,3 +1,5 @@
+package com.tom_roush.musclesloth;
+
 import java.util.ArrayList;
 
 /**
@@ -16,7 +18,7 @@ public class Workout {
     //MODIFIERS
     /**
      * Adds a machine to the given workout
-     * @param m Machine that needs to be added
+     * @param m com.tom_roush.musclesloth.Machine that needs to be added
      */
     public void addMachineToWorkout(Machine m) {_machines.add(m);}
 
