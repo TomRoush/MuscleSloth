@@ -76,17 +76,12 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         if(sharedPref.contains(_WORKOUTS))
         {
             // If something is found, we need to push the saved data into the workouts global
-            Gson gson = new Gson();
             String workoutsJSON = sharedPref.getString(_WORKOUTS, "");
-            ArrayList<Workout> tempWorkouts = gson.fromJson(workoutsJSON,
+            ArrayList<Workout> tempWorkouts = (new Gson()).fromJson(workoutsJSON,
                     new TypeToken<ArrayList<Workout>>(){}.getType());
 
             // check if it is null
-            if(tempWorkouts != null)
-            {
-                _workouts = tempWorkouts;
-            }
-            Toast.makeText(this, _workouts.getClass().toString(), Toast.LENGTH_LONG).show();
+            if(tempWorkouts != null) {_workouts = tempWorkouts;}
         }
     }
 
@@ -97,8 +92,7 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
     private void saveSavedWorkout(SharedPreferences sharedPref)
     {
         SharedPreferences.Editor prefsEditor = sharedPref.edit();
-        Gson gson = new Gson();
-        String workoutsJSON = gson.toJson(_workouts);
+        String workoutsJSON = (new Gson()).toJson(_workouts);
         prefsEditor.putString(_WORKOUTS, workoutsJSON);
         prefsEditor.apply();
     }
