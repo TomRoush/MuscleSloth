@@ -15,7 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WorkoutWorkflowActivity"></activity>
+        <activity android:name=".WorkoutWorkflowActivity" />
+        <activity
+            android:name=".WorkoutEditActivity"
+            android:label="@string/title_activity_workout_edit"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

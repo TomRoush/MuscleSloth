@@ -7,14 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class WorkoutWorkflowActivity extends AppCompatActivity {
 

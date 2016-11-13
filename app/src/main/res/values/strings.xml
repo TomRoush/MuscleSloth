@@ -7,4 +7,5 @@
     <string name="new_symbol">+</string>
     <string name="managing_work">Managing Workouts</string>
     <string name="find_times">Find Times</string>
+    <string name="title_activity_workout_edit">WorkoutEditActivity</string>
 </resources>
