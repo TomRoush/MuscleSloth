@@ -10,4 +10,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.tom_roush.musclesloth.WorkoutWorkflowActivity">
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/button"
+        android:id="@+id/listview"/>
+
+    <Button
+        android:text="@string/new_symbol"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/button" />
 </RelativeLayout>
