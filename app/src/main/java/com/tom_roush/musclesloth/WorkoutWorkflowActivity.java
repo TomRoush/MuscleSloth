@@ -4,17 +4,23 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class WorkoutWorkflowActivity extends AppCompatActivity {
 
     private final String _WORKOUTS = "WORKOUT";
     private ArrayList<Workout> _workouts;
+    private ListView _listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,16 +29,29 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
 
         // Edit Actionbar name
         getSupportActionBar().setTitle(R.string.manage_work);
+
+        // get the list view item for binding purposes
+        _listview = (ListView) findViewById(R.id.listview);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
+        // Get the needed data
         SharedPreferences sharedPref = WorkoutWorkflowActivity.this.getPreferences(Context.MODE_PRIVATE);
         loadSavedWorkout(sharedPref);
-        Toast.makeText(this, Integer.toString(_workouts.size()), Toast.LENGTH_LONG).show();
-        _workouts.add(new Workout("banana"));
+        Toast.makeText(this, _workouts.get(0).toString(), Toast.LENGTH_LONG).show();
+        //_workouts.add(new Workout("banana"));
+
+        // Connect the ListView with the array list
+        ArrayAdapter<Workout> workoutAdapter = new ArrayAdapter<Workout>(
+                this,
+                R.layout.list_view_elem,
+                R.id.listview_elem,
+                _workouts);
+
+        _listview.setAdapter(workoutAdapter);
     }
 
     @Override
@@ -59,7 +78,8 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
             // If something is found, we need to push the saved data into the workouts global
             Gson gson = new Gson();
             String workoutsJSON = sharedPref.getString(_WORKOUTS, "");
-            ArrayList<Workout> tempWorkouts = gson.fromJson(workoutsJSON,_workouts.getClass());
+            ArrayList<Workout> tempWorkouts = gson.fromJson(workoutsJSON,
+                    new TypeToken<ArrayList<Workout>>(){}.getType());
 
             // check if it is null
             if(tempWorkouts != null)
