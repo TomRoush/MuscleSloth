@@ -5,4 +5,6 @@
     <string name="image_desc">Main Logo Image</string>
     <string name="title">Muscle Sloth</string>
     <string name="new_symbol">+</string>
+    <string name="managing_work">Managing Workouts</string>
+    <string name="find_times">Find Times</string>
 </resources>

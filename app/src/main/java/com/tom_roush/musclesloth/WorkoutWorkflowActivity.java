@@ -1,16 +1,17 @@
 package com.tom_roush.musclesloth;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class WorkoutWorkflowActivity extends Activity {
+public class WorkoutWorkflowActivity extends AppCompatActivity {
 
     private final String _WORKOUTS = "WORKOUT";
     private ArrayList<Workout> _workouts;
@@ -19,6 +20,9 @@ public class WorkoutWorkflowActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_workflow);
+
+        // Edit Actionbar name
+        getSupportActionBar().setTitle(R.string.manage_work);
     }
 
     @Override
