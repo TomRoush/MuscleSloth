@@ -46,6 +46,12 @@ class Workout {
     }
 
     /**
+     * Returns the machines list
+     * @return The arraylist connected to machines
+     */
+    public ArrayList<Machine> getMachines() {return _machines;}
+
+    /**
      * The toString override
      * @return the name of the workout
      */

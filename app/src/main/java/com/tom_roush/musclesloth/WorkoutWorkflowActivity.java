@@ -1,9 +1,12 @@
 package com.tom_roush.musclesloth;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -16,6 +19,7 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
     private final String _WORKOUTS = "WORKOUT";
     private ArrayList<Workout> _workouts;
     private ListView _listview;
+    private Intent _workflow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,19 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
 
         // get the list view item for binding purposes
         _listview = (ListView) findViewById(R.id.listview);
+
+        // set up the onclick listener
+        _listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Workout listItem = (Workout)_listview.getItemAtPosition(position);
+                _workflow = new Intent(WorkoutWorkflowActivity.this, EditWorkoutActivity.class);
+                _workflow.putExtra("workout", new Gson().toJson(listItem));
+                WorkoutWorkflowActivity.this.startActivity(_workflow);
+            }
+        });
     }
 
     @Override

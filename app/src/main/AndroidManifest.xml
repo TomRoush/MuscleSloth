@@ -16,10 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".WorkoutWorkflowActivity" />
-        <activity
-            android:name=".WorkoutEditActivity"
-            android:label="@string/title_activity_workout_edit"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".EditWorkoutActivity"></activity>
     </application>
 
 </manifest>
