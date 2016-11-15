@@ -10,7 +10,6 @@ import com.google.gson.reflect.TypeToken;
 
 public class EditWorkoutActivity extends AppCompatActivity {
 
-
     private Workout _workout;
     private ListView _listview;
 
@@ -35,6 +34,7 @@ public class EditWorkoutActivity extends AppCompatActivity {
         _listview.setAdapter(workoutAdapter);
 
         // set the layout title
+        getSupportActionBar().setCustomView(R.layout.list_view_elem);
         getSupportActionBar().setTitle(_workout.toString());
     }
 
