@@ -24,6 +24,7 @@
         android:layout_gravity="end"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:id="@+id/button" />
+        android:id="@+id/button"
+        android:onClick="createNewWorkout"/>
 
 </RelativeLayout>

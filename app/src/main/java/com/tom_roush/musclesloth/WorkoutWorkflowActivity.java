@@ -108,4 +108,17 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         prefsEditor.putString(_WORKOUTS, workoutsJSON);
         prefsEditor.apply();
     }
+
+    /**
+     * Simply creates a new workout
+     * @param w the view that triggers that thing
+     */
+    public void createNewWorkout(View w)
+    {
+        Workout newWorkout = new Workout("New Workout");
+        _workflow = new Intent(WorkoutWorkflowActivity.this, EditWorkoutActivity.class);
+        _workflow.putExtra("workout", new Gson().toJson(newWorkout));
+        _workouts.add(newWorkout);
+        WorkoutWorkflowActivity.this.startActivity(_workflow);
+    }
 }
