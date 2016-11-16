@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,16 +38,20 @@ public class SuggestedTimesActivity extends AppCompatActivity {
 		Random r = new Random();
 		String[] actualValues = new String[4];
 		SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
-		for(int i = 0; i < 4; i++) { // TODO: might schedule in the past
+		DateFormat dateFormat = new SimpleDateFormat("hh:mm a", Locale.US); // XXX Locale
+		for(int i = 0; i < 4; i++) {
 			Calendar time = GregorianCalendar.getInstance();
 			time.add(Calendar.DAY_OF_WEEK, r.nextInt(7)); // TODO: limit by range
 			time.set(Calendar.HOUR_OF_DAY, r.nextInt(24));
 			time.set(Calendar.MINUTE, r.nextInt(4) * 15);
 			time.set(Calendar.SECOND, 0);
 			time.set(Calendar.MILLISECOND, 0);
-			// TODO: improve
-			actualValues[i] = dayFormat.format(time.getTime()) + ", " + "HH:MM" + " - " + "HH:MM";
+
+			Calendar endTime = (Calendar)time.clone();
+			endTime.add(Calendar.HOUR_OF_DAY, 1);
 			times.add(time);
+			actualValues[i] = dayFormat.format(time.getTime()) + ", " + dateFormat.format(time.getTime()) + " - " + dateFormat.format(endTime.getTime());
+
 		}
 
 		final String[] values = actualValues;
