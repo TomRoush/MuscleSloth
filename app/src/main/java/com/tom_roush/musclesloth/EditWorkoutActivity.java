@@ -2,6 +2,7 @@ package com.tom_roush.musclesloth;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,7 +25,6 @@ public class EditWorkoutActivity extends AppCompatActivity {
         _listview = (ListView) findViewById(R.id.listview);
 
         // Connect the ListView with the array list
-
         ArrayAdapter<Machine> workoutAdapter = new ArrayAdapter<Machine>(
                 this,
                 R.layout.list_view_elem,
@@ -34,8 +34,10 @@ public class EditWorkoutActivity extends AppCompatActivity {
         _listview.setAdapter(workoutAdapter);
 
         // set the layout title
-        getSupportActionBar().setCustomView(R.layout.list_view_elem);
-        getSupportActionBar().setTitle(_workout.toString());
+        //getSupportActionBar().setCustomView(R.layout.actionbar_edit);
+        //getSupportActionBar().setTitle(_workout.toString());
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     private void getInputWorkout()

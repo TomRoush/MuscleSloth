@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,6 +28,8 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         setContentView(R.layout.activity_workout_workflow);
 
         // Edit Actionbar name
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.manage_work);
 
         // get the list view item for binding purposes
