@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_suggested_times"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+    android:orientation="vertical"
+    tools:context="com.tom_roush.musclesloth.SuggestedTimesActivity">
+
+    <ListView
+        android:id="@+id/suggested_times_listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="8dp"
+        android:choiceMode="singleChoice"
+        android:listSelector="@color/colorPrimary">
+    </ListView>
+
+    <Button
+        android:id="@+id/suggested_times_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/primary_text_dark"
+        android:textSize="18dp"
+        android:text="Add to Calendar"/>
+</LinearLayout>
