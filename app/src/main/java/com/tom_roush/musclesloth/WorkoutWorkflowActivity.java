@@ -1,6 +1,7 @@
 package com.tom_roush.musclesloth;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.google.gson.Gson;
@@ -216,4 +216,9 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         _workout.setName(_nameText.getText().toString());
         _workouts.set(updatedWorkout.getIndex(), updatedWorkout);
     }
+
+	public void findTimeOnClick(View v) {
+		Intent intent = new Intent(getApplicationContext(), SchedulingPrefsActivity.class);
+		startActivity(intent);
+	}
 }
