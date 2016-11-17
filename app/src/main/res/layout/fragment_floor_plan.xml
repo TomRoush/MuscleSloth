@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/arc_court"
         android:layout_gravity="center"
+        android:onClick="hackyWork"
         />
 
 

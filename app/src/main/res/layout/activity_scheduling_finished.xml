@@ -9,6 +9,28 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.tom_roush.musclesloth.SchedulingFinishedActivity">
+    <TextView
+        android:id="@+id/allSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="8dp"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:text="You're all set!"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/allSet"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        android:text="Return to front page"
+        android:onClick="returnToFront"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -23,14 +45,6 @@
         android:layout_centerInParent="true"
         android:src="@drawable/check_circle"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
-        android:gravity="center"
-        android:textSize="32sp"
-        android:text="You're all set!"/>
+
 
 </RelativeLayout>

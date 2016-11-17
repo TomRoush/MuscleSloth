@@ -18,7 +18,7 @@ public class RoomPageActivity extends AppCompatActivity {
 
         ScheduleListView = (ListView) findViewById(R.id.freeListView);
 
-        String[] Schedule = new String[]{"Mixed Martial Arts 7:00 PM-8:00 PM,Judo Club 8:00 PM-9:00 PM, Taek-Won-Do 9:00 PM-10:00 PM"};
+        String[] Schedule = new String[]{"Mixed Martial Arts 7:00 PM-8:00 PM", "Judo Club 8:00 PM-9:00 PM", "Taek-Won-Do 9:00 PM-10:00 PM"};
         ArrayList<String> scheduleList = new ArrayList<String>();
         scheduleList.addAll(Arrays.asList(Schedule));
 
