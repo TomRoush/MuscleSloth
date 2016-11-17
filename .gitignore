@@ -40,6 +40,9 @@ project.properties
 .gradle
 build/
 
+#Windows
+Thumbs.db
+
 # OS X
 .DS_Store
 app/src/main/res/layout/activity_machineroompage.xml
