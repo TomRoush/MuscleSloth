@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -202,9 +201,14 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
      */
     public void createNewWorkout(View w)
     {
-        _workout = new Workout("New Workout",_workouts.size());
-        _workouts.add(_workout);
-        updateViewToWorkout();
+        if(_workout == null) {
+            _workout = new Workout("New Workout", _workouts.size());
+            _workouts.add(_workout);
+            updateViewToWorkout();
+        } else
+        {
+            // TODO : add code for adding machines
+        }
     }
 
     private void updateWorkout(Workout updatedWorkout)
