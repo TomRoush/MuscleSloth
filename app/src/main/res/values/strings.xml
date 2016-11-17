@@ -9,4 +9,6 @@
     <string name="find_times">Find Times</string>
     <string name="title_activity_workout_edit">WorkoutEditActivity</string>
     <string name="title_activity_scheduling_prefs">Select Data and Time</string>
+    <string name="title_activity_floor_plan">FloorPlan</string>
+    <string name="action_settings">Settings</string>
 </resources>
