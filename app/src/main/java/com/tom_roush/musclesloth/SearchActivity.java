@@ -1,15 +1,13 @@
 package com.tom_roush.musclesloth;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static com.tom_roush.musclesloth.R.id.editText;
 
 
 public class SearchActivity extends AppCompatActivity {
@@ -28,13 +26,10 @@ public class SearchActivity extends AppCompatActivity {
         mainListView = (ListView) findViewById(R.id.freeListView);
 
         String[] machines = new String[]{"Flat Bench", "Incline Bench", "Decline Bench"};
-        ArrayList<String> machinesList = new ArrayList<String>();
+        ArrayList<String> machinesList = new ArrayList<>();
         machinesList.addAll(Arrays.asList(machines));
 
-        listAdapter = new ArrayAdapter<String>(SearchActivity.this, R.layout.simplerow, machinesList);
-
-        listAdapter.add("Incline Bench");
-        listAdapter.add("Decline Bench");
+        listAdapter = new ArrayAdapter<>(SearchActivity.this, R.layout.simplerow, machinesList);
 
         mainListView.setAdapter(listAdapter);
     }
