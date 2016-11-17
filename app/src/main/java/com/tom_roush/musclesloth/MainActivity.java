@@ -31,8 +31,8 @@ public class MainActivity extends Activity {
         MainActivity.this.startActivity(_workflow);
 	}
 
-	public void startArcActivity(View v)
-	{
-		Toast.makeText(this, "Arc", Toast.LENGTH_LONG).show();
+	public void goToFloorPlan (View v){
+		_workflow = new Intent(MainActivity.this, FloorPlan.class);
+		MainActivity.this.startActivity(_workflow);
 	}
 }
