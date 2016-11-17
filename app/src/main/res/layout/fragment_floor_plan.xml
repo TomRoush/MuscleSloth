@@ -14,6 +14,35 @@
         android:layout_height="wrap_content"
         />
 
+    <Button
+        android:text="Button"
+        android:visibility="invisible"
+        android:gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/button2"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:onClick="goToRoomPageActivity"
+        android:layout_marginBottom="164dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/section_label"
+        android:layout_toEndOf="@+id/section_label" />
+
+    <Button
+        android:text="Button"
+        android:visibility="invisible"
+        android:gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/button3"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/button2"
+        android:layout_toEndOf="@+id/button2"
+        android:layout_marginLeft="69dp"
+        android:layout_marginStart="69dp"
+        android:onClick="goToMachinePageActivity"/>
+
     <ImageView
         android:id="@+id/room_image"
         android:layout_width="wrap_content"
@@ -21,6 +50,7 @@
         android:src="@drawable/arc_court"
         android:layout_gravity="center"
         />
+
 
 
 

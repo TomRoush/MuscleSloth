@@ -1,5 +1,6 @@
 package com.tom_roush.musclesloth;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.View.OnClickListener;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +25,7 @@ import android.view.ViewGroup;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Button;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -31,6 +34,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class FloorPlan extends AppCompatActivity {
     static final int NUM_ITEMS = 4;
+    private Intent _workflow;
     /**
      * The {@link PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -83,6 +87,9 @@ public class FloorPlan extends AppCompatActivity {
     }
 
 
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -131,6 +138,7 @@ public class FloorPlan extends AppCompatActivity {
         AppIndex.AppIndexApi.start(client, getIndexApiAction());
     }
 
+
     @Override
     public void onStop() {
         super.onStop();
@@ -166,6 +174,9 @@ public class FloorPlan extends AppCompatActivity {
             return fragment;
         }
 
+
+
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -175,13 +186,16 @@ public class FloorPlan extends AppCompatActivity {
             textView.setText("Floor " + getArguments().getInt(ARG_SECTION_NUMBER));
 
             ImageView imageView = (ImageView) rootView.findViewById(R.id.room_image);
+
+            Button mbutton = (Button) rootView.findViewById(R.id.button2);
+
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 0){
                 imageView.setImageResource(R.drawable.lower_level);
             }
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 1){
                 imageView.setImageResource(R.drawable.arc_court);
             }
-            if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
+                if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
                 imageView.setImageResource(R.drawable.arc_court2);
             }
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 3){
@@ -190,7 +204,13 @@ public class FloorPlan extends AppCompatActivity {
             return rootView;
         }
 
+
     }
+
+
+
+//passing listener object to button
+
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
