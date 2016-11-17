@@ -52,8 +52,7 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         _searchView = (SearchView) findViewById(R.id.searchview);
 
         setSupportActionBar(_toolbar);
-        _vswitcher.showNext();
-        _vswitsearch.showNext();
+
 
         // set search view stuff
         final SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
@@ -168,8 +167,10 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         //_workouts.add(new Workout("banana"));
 
         // Start with manage view
-        updateViewToManage();
-
+        if(_workout == null) updateViewToManage();
+        else updateViewToWorkout();
+        _vswitcher.showNext();
+        _vswitsearch.showNext();
     }
 
     @Override
