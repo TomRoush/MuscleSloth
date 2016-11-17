@@ -25,10 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
         <activity android:name=".MachinePageActivity" />
         <activity android:name=".RoomPageActivity"></activity>
-=======
         <activity android:name=".WorkoutWorkflowActivity" />
         <activity android:name=".SuggestedTimesActivity"/>
         <activity android:name=".SchedulingFinishedActivity"/>
@@ -37,7 +36,6 @@
             android:label="@string/title_activity_scheduling_prefs"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
->>>>>>> origin/master
     </application>
 
 </manifest>
