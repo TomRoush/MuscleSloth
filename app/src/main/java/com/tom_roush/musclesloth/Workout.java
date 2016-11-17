@@ -8,10 +8,12 @@ import java.util.ArrayList;
 class Workout {
     private String _name;
     private ArrayList<Machine> _machines;
+    private int _index;
 
-    public Workout(String name) {
+    public Workout(String name, int i) {
         _machines = new ArrayList<Machine>();
         _name = name;
+        _index = i;
     }
 
     //MODIFIERS
@@ -33,6 +35,12 @@ class Workout {
     public void deleteMachineFromWorkout(Machine m) {
         _machines.remove(m);
     }
+
+    /**
+     * Update the name of the workout
+     * @param name new name
+     */
+    public void setName(String name) {_name = name;}
 
     //GETTERS
 
@@ -57,6 +65,12 @@ class Workout {
      */
     @Override
     public String toString() {return _name;}
+
+    /**
+     * Returns the position in the arralist
+     * @return the position
+     */
+    public int getIndex() {return _index;}
 
 }
 

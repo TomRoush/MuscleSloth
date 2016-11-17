@@ -1,18 +1,25 @@
 package com.tom_roush.musclesloth;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.util.ArrayList;
 
 public class WorkoutWorkflowActivity extends AppCompatActivity {
@@ -20,44 +27,97 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
     private final String _WORKOUTS = "WORKOUT";
     private ArrayList<Workout> _workouts;
     private ListView _listview;
-    private Intent _workflow;
+    private Workout _workout;
+    private Toolbar _toolbar;
+    private EditText _nameText;
+    private Button _findTimesBtn;
+    private TextView _titleView;
+    private ViewSwitcher _vswitcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workout_workflow);
-
-        // Edit Actionbar name
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.manage_work);
+        setContentView(R.layout.edit_workout);
 
         // get the list view item for binding purposes
         _listview = (ListView) findViewById(R.id.listview);
+        _toolbar = (Toolbar) findViewById(R.id.toolbar);
+        _nameText = (EditText) findViewById(R.id.nameText);
+        _findTimesBtn = (Button) findViewById(R.id.findTimesBtn);
+        _titleView = (TextView) findViewById(R.id.titleBar);
+        _vswitcher = (ViewSwitcher) findViewById(R.id.vswitcher);
 
+        setSupportActionBar(_toolbar);
+        _vswitcher.showNext();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(_workout == null) {
+            super.onBackPressed();
+        } else {
+           updateViewToManage();
+        }
+    }
+
+    private void updateViewToWorkout()
+    {
         // set up the onclick listener
         _listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Workout listItem = (Workout)_listview.getItemAtPosition(position);
-                _workflow = new Intent(WorkoutWorkflowActivity.this, EditWorkoutActivity.class);
-                _workflow.putExtra("workout", new Gson().toJson(listItem));
-                WorkoutWorkflowActivity.this.startActivity(_workflow);
+                // TODO : add code for Machines
             }
         });
+
+        // Connect the ListView with the array list
+        ArrayAdapter<Machine> workoutAdapter = new ArrayAdapter<Machine>(
+                this,
+                R.layout.list_view_elem,
+                R.id.listview_elem,
+                _workout.getMachines());
+
+        _listview.setAdapter(workoutAdapter);
+
+        _nameText.setText(_workout.toString());
+        _nameText.setVisibility(View.VISIBLE);
+        _nameText.setFocusable(false);
+        _nameText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                _nameText.setFocusableInTouchMode(true);
+                return false;
+            }
+        });
+        View this_view = this.findViewById(R.id.edit_workout);
+        this_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _nameText.setFocusable(false);
+                _nameText.setFocusableInTouchMode(false);
+            }});
+
+        // Find times button
+        _findTimesBtn.setVisibility(View.VISIBLE);
+        _vswitcher.showNext();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        // Get the needed data
-        SharedPreferences sharedPref = WorkoutWorkflowActivity.this.getPreferences(Context.MODE_PRIVATE);
-        loadSavedWorkout(sharedPref);
-        Toast.makeText(this, _workouts.get(0).toString(), Toast.LENGTH_LONG).show();
-        //_workouts.add(new Workout("banana"));
+    private void updateViewToManage()
+    {
+        if(_workout != null) updateWorkout(_workout);
+        _workout = null;
+        // set up the onclick listener
+        _listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                _workout = (Workout)_listview.getItemAtPosition(position);
+                updateViewToWorkout();
+            }
+        });
 
         // Connect the ListView with the array list
         ArrayAdapter<Workout> workoutAdapter = new ArrayAdapter<Workout>(
@@ -67,6 +127,29 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
                 _workouts);
 
         _listview.setAdapter(workoutAdapter);
+
+        // Title bar
+        _nameText.setVisibility(View.INVISIBLE);
+        getSupportActionBar().setTitle(R.string.manage_work);
+
+        // Find times button
+        _findTimesBtn.setVisibility(View.INVISIBLE);
+        _vswitcher.showNext();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Get the needed data
+        SharedPreferences sharedPref = WorkoutWorkflowActivity.this.getPreferences(Context.MODE_PRIVATE);
+        loadSavedWorkout(sharedPref);
+
+        //_workouts.add(new Workout("banana"));
+
+        // Start with manage view
+        updateViewToManage();
+
     }
 
     @Override
@@ -90,6 +173,7 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         // perform check if the preferences exist
         if(sharedPref.contains(_WORKOUTS))
         {
+
             // If something is found, we need to push the saved data into the workouts global
             String workoutsJSON = sharedPref.getString(_WORKOUTS, "");
             ArrayList<Workout> tempWorkouts = (new Gson()).fromJson(workoutsJSON,
@@ -118,10 +202,14 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
      */
     public void createNewWorkout(View w)
     {
-        Workout newWorkout = new Workout("New Workout");
-        _workflow = new Intent(WorkoutWorkflowActivity.this, EditWorkoutActivity.class);
-        _workflow.putExtra("workout", new Gson().toJson(newWorkout));
-        _workouts.add(newWorkout);
-        WorkoutWorkflowActivity.this.startActivity(_workflow);
+        _workout = new Workout("New Workout",_workouts.size());
+        _workouts.add(_workout);
+        updateViewToWorkout();
+    }
+
+    private void updateWorkout(Workout updatedWorkout)
+    {
+        _workout.setName(_nameText.getText().toString());
+        _workouts.set(updatedWorkout.getIndex(), updatedWorkout);
     }
 }
