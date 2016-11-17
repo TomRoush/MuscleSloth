@@ -1,11 +1,11 @@
 package com.tom_roush.musclesloth;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -24,13 +24,11 @@ public class MainActivity extends Activity {
 
 	public void startWorkActivity(View v)
 	{
-//		Toast.makeText(this, "Workout", Toast.LENGTH_LONG).show();
-		startActivity(new Intent(this, SuggestedTimesActivity.class));
+		Toast.makeText(this, "Workout", Toast.LENGTH_LONG).show();
 	}
 
 	public void startArcActivity(View v)
 	{
-		startActivity(new Intent(this, SchedulingFinishedActivity.class));
-//		Toast.makeText(this, "Arc", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "Arc", Toast.LENGTH_LONG).show();
 	}
 }

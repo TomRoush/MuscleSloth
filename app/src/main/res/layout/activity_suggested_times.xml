@@ -30,6 +30,6 @@
         android:paddingRight="40dp"
         android:backgroundTint="@color/colorPrimary"
         android:textColor="@android:color/primary_text_dark"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:text="Add to Calendar"/>
 </LinearLayout>
