@@ -1,5 +1,6 @@
 package com.tom_roush.musclesloth;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,6 +32,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class FloorPlan extends AppCompatActivity {
     static final int NUM_ITEMS = 4;
+    public static int currentPage = 0;
     /**
      * The {@link PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -80,6 +82,10 @@ public class FloorPlan extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    public void hackyWork(View v) {
+        startActivity(new Intent(this, (currentPage == 1 || currentPage == 3 ? RoomPageActivity.class : MachinePageActivity.class)));
     }
 
 
@@ -176,15 +182,19 @@ public class FloorPlan extends AppCompatActivity {
 
             ImageView imageView = (ImageView) rootView.findViewById(R.id.room_image);
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 0){
+                currentPage = 0;
                 imageView.setImageResource(R.drawable.lower_level);
             }
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 1){
+                currentPage = 1;
                 imageView.setImageResource(R.drawable.arc_court);
             }
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
+                currentPage = 2;
                 imageView.setImageResource(R.drawable.arc_court2);
             }
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 3){
+                currentPage = 3;
                 imageView.setImageResource(R.drawable.top);
             }
             return rootView;
@@ -230,7 +240,6 @@ public class FloorPlan extends AppCompatActivity {
             return null;
         }
 
+
     }
-
-
 }
