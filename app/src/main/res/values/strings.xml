@@ -4,4 +4,9 @@
     <string name="manage_work">Manage Workouts</string>
     <string name="image_desc">Main Logo Image</string>
     <string name="title">Muscle Sloth</string>
+    <string name="new_symbol">+</string>
+    <string name="managing_work">Managing Workouts</string>
+    <string name="find_times">Find Times</string>
+    <string name="title_activity_workout_edit">WorkoutEditActivity</string>
+    <string name="title_activity_scheduling_prefs">Select Data and Time</string>
 </resources>
