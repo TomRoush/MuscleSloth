@@ -25,7 +25,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         mainListView = (ListView) findViewById(R.id.freeListView);
 
-        String[] machines = new String[]{"Flat Bench", "Incline Bench", "Decline Bench"};
+        String[] machines = new String[]{"Flat Bench 1", "Flat Bench 2", "Incline Bench 1", "Incline Bench 2", "Decline Bench 1", "Decline Bench 2"};
         ArrayList<String> machinesList = new ArrayList<>();
         machinesList.addAll(Arrays.asList(machines));
 
