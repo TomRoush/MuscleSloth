@@ -27,7 +27,8 @@
         </activity>
 
         <activity android:name=".MachinePageActivity" />
-        <activity android:name=".RoomPageActivity"></activity>
+        <activity android:name=".RoomPageActivity"
+            android:label="@string/combat_room"/>
         <activity android:name=".WorkoutWorkflowActivity" />
         <activity android:name=".SuggestedTimesActivity"/>
         <activity android:name=".SchedulingFinishedActivity"/>
