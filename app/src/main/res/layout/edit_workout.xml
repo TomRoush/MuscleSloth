@@ -12,26 +12,38 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/toolbar"
-        android:layout_above="@+id/button"
+        android:layout_above="@+id/vswitsearch"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:id="@+id/listview"/>
 
-    <Button
-        android:text="@string/new_symbol"
-        android:layout_width="60dp"
+    <ViewSwitcher
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:id="@+id/button"
-        android:onClick="createNewWorkout"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="25dp"
-        android:layout_marginEnd="25dp" />
+        android:id="@+id/vswitsearch">
+        <Button
+            android:text="@string/new_symbol"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:id="@+id/button"
+            android:onClick="createNewWorkout"
+            android:layout_marginRight="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="25dp" />
+        <SearchView
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchview">
+        </SearchView>
+    </ViewSwitcher>
+
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

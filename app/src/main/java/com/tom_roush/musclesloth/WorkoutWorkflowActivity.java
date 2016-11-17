@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,6 +33,8 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
     private Button _findTimesBtn;
     private TextView _titleView;
     private ViewSwitcher _vswitcher;
+    private ViewSwitcher _vswitsearch;
+    private SearchView _searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +48,24 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         _findTimesBtn = (Button) findViewById(R.id.findTimesBtn);
         _titleView = (TextView) findViewById(R.id.titleBar);
         _vswitcher = (ViewSwitcher) findViewById(R.id.vswitcher);
+        _vswitsearch = (ViewSwitcher) findViewById(R.id.vswitsearch);
+        _searchView = (SearchView) findViewById(R.id.searchview);
 
         setSupportActionBar(_toolbar);
-        _vswitcher.showNext();
+
+
+        // set search view stuff
+        final SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {return true;}
+        };
+        _searchView.setOnQueryTextListener(queryTextListener);
     }
 
     @Override
@@ -101,6 +119,7 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         // Find times button
         _findTimesBtn.setVisibility(View.VISIBLE);
         _vswitcher.showNext();
+        _vswitsearch.showNext();
     }
 
     private void updateViewToManage()
@@ -134,6 +153,7 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         // Find times button
         _findTimesBtn.setVisibility(View.INVISIBLE);
         _vswitcher.showNext();
+        _vswitsearch.showNext();
     }
 
     @Override
@@ -147,8 +167,10 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         //_workouts.add(new Workout("banana"));
 
         // Start with manage view
-        updateViewToManage();
-
+        if(_workout == null) updateViewToManage();
+        else updateViewToWorkout();
+        _vswitcher.showNext();
+        _vswitsearch.showNext();
     }
 
     @Override
@@ -205,9 +227,6 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
             _workout = new Workout("New Workout", _workouts.size());
             _workouts.add(_workout);
             updateViewToWorkout();
-        } else
-        {
-            // TODO : add code for adding machines
         }
     }
 
