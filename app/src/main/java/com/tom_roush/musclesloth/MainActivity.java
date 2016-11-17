@@ -35,4 +35,8 @@ public class MainActivity extends Activity {
 	{
 		Toast.makeText(this, "Arc", Toast.LENGTH_LONG).show();
 	}
+	public void goToFloorPlan (View v){
+			Intent intent = new Intent(this, FloorPlan.class);
+			startActivity(intent);
+	}
 }
