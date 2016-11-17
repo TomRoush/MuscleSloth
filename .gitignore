@@ -42,3 +42,6 @@ build/
 
 # OS X
 .DS_Store
+app/src/main/res/layout/activity_machineroompage.xml
+app/src/main/res/layout/activity_machineroompage.xml
+app/src/main/java/com/tom_roush/musclesloth/machineroompage.java

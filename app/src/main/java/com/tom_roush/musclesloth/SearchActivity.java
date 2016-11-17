@@ -33,9 +33,6 @@ public class SearchActivity extends AppCompatActivity {
 
         listAdapter = new ArrayAdapter<String>(SearchActivity.this, R.layout.simplerow, machinesList);
 
-        listAdapter.add("Incline Bench");
-        listAdapter.add("Decline Bench");
-
         mainListView.setAdapter(listAdapter);
     }
 }

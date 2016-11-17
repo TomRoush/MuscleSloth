@@ -21,7 +21,8 @@
         android:layout_height="264dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="5dp"
-        android:id="@+id/front_image" />
+        android:id="@+id/front_image"
+        android:background="@android:color/transparent"/>
 
     <Button
         android:text="@string/arc_floor_plan"
