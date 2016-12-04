@@ -33,52 +33,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="none"
-        android:text='Search Results for "bench":'
-        android:ems="10"
-        android:id="@+id/editText3"
-        android:enabled="false"
-        android:textSize="25sp"
-        android:padding="10px"
-        android:layout_alignParentLeft="true"
-        android:background="@null"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="@color/colorPrimary" />
-
-    <ImageView
-        android:layout_width="50dp"
-        app:srcCompat="@drawable/dumbbells"
-        android:id="@+id/imageView2"
-        android:layout_height="50dp"
-        android:layout_below="@+id/editText3"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignStart="@+id/editText3" />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/freeListView"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
-        app:srcCompat="@drawable/gears"
-        android:layout_below="@+id/freeListView"
-        android:layout_alignLeft="@+id/imageView2"
-        android:layout_alignStart="@+id/imageView2"
-        android:layout_marginTop="11dp"
-        android:id="@+id/imageView4"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="none"
         android:enabled="false"
         android:background="@null"
         android:padding="10px"
@@ -86,28 +40,19 @@
         android:ems="10"
         android:id="@+id/editText4"
         android:textSize="22sp"
-        android:layout_alignTop="@+id/imageView4"
+        android:textColor="?attr/colorPrimary"
+        android:layout_above="@+id/machineListView"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="?attr/colorPrimary" />
+        android:layout_alignParentEnd="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="none"
-        android:enabled="false"
-        android:text="none found"
-        android:ems="10"
-        android:id="@+id/editText8"
-        android:background="@null"
-        android:textSize="12sp"
-        android:padding="15px"
-
-        android:textStyle="normal|italic"
-        android:textColor="?attr/colorControlNormal"
-        android:layout_below="@+id/editText7"
-        android:layout_alignLeft="@+id/imageView8"
-        android:layout_alignStart="@+id/imageView8" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/cardioListView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="21dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -121,7 +66,7 @@
         android:padding="10px"
         android:textSize="22sp"
         android:textColor="?attr/colorPrimary"
-        android:layout_alignBottom="@+id/imageView8"
+        android:layout_above="@+id/cardioListView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -130,26 +75,51 @@
         android:layout_height="50dp"
         app:srcCompat="@drawable/cardio"
         android:id="@+id/imageView8"
-        android:layout_below="@+id/editText6"
-        android:layout_alignLeft="@+id/editText6"
-        android:layout_alignStart="@+id/editText6"
-        android:layout_marginTop="12dp" />
+        android:layout_above="@+id/cardioListView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="none"
-        android:text="none found"
-        android:enabled="false"
-        android:background="@null"
-        android:padding="15px"
-        android:ems="10"
-        android:id="@+id/editText6"
-        android:textSize="12sp"
-        android:textStyle="normal|italic"
-        android:textColor="?attr/colorControlNormal"
-        android:layout_below="@+id/imageView4"
-        android:layout_alignLeft="@+id/imageView4"
-        android:layout_alignStart="@+id/imageView4" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/machineListView"
+        android:layout_marginBottom="13dp"
+        android:layout_above="@+id/editText7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        app:srcCompat="@drawable/gears"
+        android:id="@+id/imageView4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/machineListView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/freeListView"
+        android:layout_above="@+id/editText4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp" />
+
+    <ImageView
+        android:layout_width="50dp"
+        app:srcCompat="@drawable/dumbbells"
+        android:id="@+id/imageView2"
+        android:layout_height="50dp"
+        android:layout_above="@+id/freeListView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/imageView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
