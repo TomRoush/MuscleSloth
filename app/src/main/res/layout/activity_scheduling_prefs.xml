@@ -67,7 +67,6 @@
             android:layout_height="wrap_content"
             app:thumbNumber="2"
             app:range1="@drawable/multislider_scrubber_track_holo_light"
-            app:stepsThumbsApart="5"
             app:drawThumbsApart="true" />
 
         <ImageView

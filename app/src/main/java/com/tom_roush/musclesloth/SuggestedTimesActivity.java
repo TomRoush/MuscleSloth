@@ -37,29 +37,47 @@ public class SuggestedTimesActivity extends AppCompatActivity {
 		Intent intent = getIntent();
 		Calendar day = GregorianCalendar.getInstance();
 		day.setTimeInMillis(intent.getLongExtra("pickedDate", 0));
+		Calendar start = (Calendar)day.clone();
+		start.set(Calendar.HOUR_OF_DAY, intent.getIntExtra("startHour", 0));
+		start.set(Calendar.MINUTE, intent.getIntExtra("startMin", 0));
+		Calendar end = (Calendar)day.clone();
+		end.set(Calendar.HOUR_OF_DAY, intent.getIntExtra("endHour", 23) - 1); // TODO: Don't hardcode workout duration
+		end.set(Calendar.MINUTE, intent.getIntExtra("endMin", 59));
 
 		final List times = new ArrayList<>();
 		Random r = new Random();
-		String[] actualValues = new String[4];
+		List timeStrings = new ArrayList<>();
 		SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
 		DateFormat dateFormat = new SimpleDateFormat("hh:mm a", Locale.US); // XXX Locale
 		for(int i = 0; i < 4; i++) {
 			Calendar time = (Calendar)day.clone();
-//			time.add(Calendar.DAY_OF_WEEK, r.nextInt(7)); // TODO: limit by range
-			time.set(Calendar.HOUR_OF_DAY, r.nextInt(24));
-			time.set(Calendar.MINUTE, r.nextInt(4) * 15);
+//			time.add(Calendar.DAY_OF_WEEK, r.nextInt(7));
 			time.set(Calendar.SECOND, 0);
 			time.set(Calendar.MILLISECOND, 0);
+			int attempts = 0;
+			do {
+				time.set(Calendar.HOUR_OF_DAY, r.nextInt(24));
+				time.set(Calendar.MINUTE, r.nextInt(4) * 15);
+				attempts++;
+			} while((time.getTimeInMillis() < start.getTimeInMillis() || time.getTimeInMillis() > end.getTimeInMillis()) && attempts < 10);
+			if(attempts == 10) continue;
 
 			Calendar endTime = (Calendar)time.clone();
 			endTime.add(Calendar.HOUR_OF_DAY, 1);
 			times.add(time);
 			// dayFormat.format(time.getTime()) + ", " +
-			actualValues[i] = dateFormat.format(time.getTime()) + " - " + dateFormat.format(endTime.getTime());
+			timeStrings.add(dateFormat.format(time.getTime()) + " - " + dateFormat.format(endTime.getTime()));
 
 		}
 
-		final String[] values = actualValues;
+		if(times.size() == 0) {
+			times.add(start);
+			start.add(Calendar.HOUR_OF_DAY, 1);
+			timeStrings.add(dateFormat.format(start.getTime()) + " - " + dateFormat.format(start.getTime()));
+		}
+
+
+		final String[] values = (String[])timeStrings.toArray(new String[timeStrings.size()]);
 		ArrayAdapter adapter = new ArrayAdapter(this, R.layout.list_element_suggested_times, values);
 		final ListView listView = (ListView) findViewById(R.id.suggested_times_listview);
 		listView.setAdapter(adapter);
@@ -85,7 +103,7 @@ public class SuggestedTimesActivity extends AppCompatActivity {
 					ContentValues values = new ContentValues();
 					long time = ((Calendar)times.get(listView.getCheckedItemPosition())).getTimeInMillis();
 					values.put(CalendarContract.Events.DTSTART, time);
-					values.put(CalendarContract.Events.DTEND, time + 3600000); // FIXME
+					values.put(CalendarContract.Events.DTEND, time + 3600000); // FIXME duration of workout
 	//				values.put(CalendarContract.Events.RRULE,
 	//					"FREQ=DAILY;COUNT=20;BYDAY=MO,TU,WE,TH,FR;WKST= // TODO: allow user to fix if they want to repeat
 					values.put(CalendarContract.Events.TITLE, "Workout at ARC"); // TODO: add to settings

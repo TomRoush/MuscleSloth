@@ -24,18 +24,18 @@ public class SchedulingPrefsActivity extends AppCompatActivity {
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
-		MultiSlider dataRangeSlider = (MultiSlider)findViewById(R.id.date_range_slider);
-		dataRangeSlider.setMax(1440);
-		dataRangeSlider.getThumb(0).setValue(600); // Doesn't work
-		dataRangeSlider.getThumb(1).setValue(1200);
+		final MultiSlider multiSlider = (MultiSlider)findViewById(R.id.date_range_slider);
+		multiSlider.setMax(1440);
+		multiSlider.getThumb(0).setValue(600); // Doesn't work
+		multiSlider.getThumb(1).setValue(1200);
+		multiSlider.setStepsThumbsApart(90); // workout length
 		timeRangeTextView = (TextView)findViewById(R.id.time_title);
-		dataRangeSlider.setOnThumbValueChangeListener(new MultiSlider.OnThumbValueChangeListener() {
+		multiSlider.setOnThumbValueChangeListener(new MultiSlider.OnThumbValueChangeListener() {
 			@Override
 			public void onValueChanged(MultiSlider multiSlider, MultiSlider.Thumb thumb, int thumbIndex, int value) {
 				if(thumbIndex == 0) {
 					timeRangeTextView.setText("TIME RANGE: " + value / 60 + ":" + String.format("%02d", value % 60) + " - " + multiSlider.getThumb(1).getValue() / 60 + ":" + String.format("%02d", multiSlider.getThumb(1).getValue() % 60));
 				} else {
-]]
 					timeRangeTextView.setText("TIME RANGE: " + multiSlider.getThumb(0).getValue() / 60 + ":" + String.format("%02d", multiSlider.getThumb(0).getValue() % 60) + " - " + value / 60 + ":" + String.format("%02d", value % 60));
 				}
 			}
@@ -50,9 +50,12 @@ public class SchedulingPrefsActivity extends AppCompatActivity {
 				Calendar time = GregorianCalendar.getInstance();
 				time.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
 				intent.putExtra("pickedDate", time.getTimeInMillis());
+				intent.putExtra("startHour", multiSlider.getThumb(0).getValue() / 60);
+				intent.putExtra("startMin", multiSlider.getThumb(0).getValue() % 60);
+				intent.putExtra("endHour", multiSlider.getThumb(1).getValue() / 60);
+				intent.putExtra("endMin", multiSlider.getThumb(1).getValue() % 60);
 				startActivity(intent);
 			}
 		});
 	}
-
 }
