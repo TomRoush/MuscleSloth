@@ -54,11 +54,21 @@
             android:datePickerMode="spinner"/>
 
         <TextView
+            android:id="@+id/time_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="true"
             android:textSize="16sp"
             android:text="Time Range:"/>
+
+        <io.apptik.widget.MultiSlider
+            android:id="@+id/date_range_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:thumbNumber="2"
+            app:range1="@drawable/multislider_scrubber_track_holo_light"
+            app:stepsThumbsApart="5"
+            app:drawThumbsApart="true" />
 
         <ImageView
             android:layout_width="wrap_content"
