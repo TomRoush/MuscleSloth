@@ -1,5 +1,6 @@
 package com.tom_roush.musclesloth;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -15,6 +16,9 @@ public class RoomPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_page);
+
+	    ActionBar actionBar = getSupportActionBar();
+	    actionBar.setTitle(R.string.combat_room);
 
         ScheduleListView = (ListView) findViewById(R.id.freeListView);
 

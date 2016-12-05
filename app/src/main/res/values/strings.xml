@@ -8,12 +8,12 @@
     <string name="combat_room">Combat Room</string>
     <string name="managing_work">Managing Workouts</string>
     <string name="find_times">Find Times</string>
-    <string name="title_activity_workout_edit">WorkoutEditActivity</string>
+    <string name="title_activity_workout_edit">Edit Workout</string>
     <string name="title_activity_scheduling_prefs">Select Data and Time</string>
 
     <string name="gym_one">Gym 1</string>
 
-    <string name="title_activity_floor_plan">FloorPlan</string>
+    <string name="title_activity_floor_plan">Floor Plan</string>
     <string name="action_settings">Settings</string>
 
 </resources>
