@@ -48,4 +48,5 @@ public class SearchActivity extends AppCompatActivity {
         mainListView = (ListView) findViewById(R.id.cardioListView);
         mainListView.setAdapter(listAdapter);
     }
+
 }

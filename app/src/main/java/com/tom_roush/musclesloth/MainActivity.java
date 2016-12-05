@@ -35,4 +35,9 @@ public class MainActivity extends Activity {
 		_workflow = new Intent(MainActivity.this, FloorPlan.class);
 		MainActivity.this.startActivity(_workflow);
 	}
+
+	public void searchResults (View v){
+		_workflow = new Intent(MainActivity.this, SearchResultsActivity.class);
+		MainActivity.this.startActivity(_workflow);
+	}
 }

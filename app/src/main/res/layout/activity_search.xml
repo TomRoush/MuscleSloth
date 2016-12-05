@@ -45,15 +45,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/cardioListView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="21dp" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,7 +72,7 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:id="@+id/machineListView"
         android:layout_marginBottom="13dp"
         android:layout_above="@+id/editText7"
@@ -99,7 +90,7 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:id="@+id/freeListView"
         android:layout_above="@+id/editText4"
         android:layout_alignParentLeft="true"
@@ -115,9 +106,18 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:id="@+id/cardioListView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <SearchView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:onClick="searchResults"
         android:layout_above="@+id/imageView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
