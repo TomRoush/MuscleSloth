@@ -5,15 +5,19 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.google.gson.Gson;
@@ -115,6 +119,7 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
 
     private void updateViewToManage()
     {
+        Log.d("banana","ananus");
         _workouts_view = true;
         workout_list_callback();
 
@@ -124,9 +129,27 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         _listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (parent.getId())
+                {
+                    case R.id.listview_elem:
+                        Log.d("banana","melon");
+                    case R.id.imageButton:
+                        Log.d("banana","peanut");
+                }
+                TextView tv = (TextView) view.findViewById(R.id.listview_elem);
+                ImageButton ib = (ImageButton) view.findViewById(R.id.imageButton);
+
+                ib.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Log.d("banana","apple");
+                            }
+                        }
+                );
                 _workout = (Workout)_listview.getItemAtPosition(position);
+                Log.d("banana",_workout.toString());
                 updateViewToWorkout();
             }
         });
