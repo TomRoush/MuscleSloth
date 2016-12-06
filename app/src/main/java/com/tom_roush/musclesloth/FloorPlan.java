@@ -3,11 +3,25 @@ package com.tom_roush.musclesloth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+<<<<<<< Updated upstream
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
+=======
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.PagerAdapter;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+>>>>>>> Stashed changes
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -71,6 +85,10 @@ public class FloorPlan extends AppCompatActivity {
         startActivity(new Intent(this, (currentPage == 1 || currentPage == 3 ? RoomPageActivity.class : MachinePageActivity.class)));
     }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -128,26 +146,30 @@ public class FloorPlan extends AppCompatActivity {
             return fragment;
         }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_floor_plan, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-        //    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            //    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             textView.setText("Floor " + getArguments().getInt(ARG_SECTION_NUMBER));
 
             ImageView imageView = (ImageView) rootView.findViewById(R.id.room_image);
 
-            Button mbutton = (Button) rootView.findViewById(R.id.button2);
 
-            if(getArguments().getInt(ARG_SECTION_NUMBER) == 0){
+            if (getArguments().getInt(ARG_SECTION_NUMBER) == 0) {
                 currentPage = 0;
                 imageView.setImageResource(R.drawable.lower_level);
             }
-            if(getArguments().getInt(ARG_SECTION_NUMBER) == 1){
+            if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
                 currentPage = 1;
                 imageView.setImageResource(R.drawable.arc_court);
             }
+<<<<<<< Updated upstream
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
                 currentPage = 2;
                 imageView.setImageResource(R.drawable.arc_court2);
@@ -165,39 +187,73 @@ public class FloorPlan extends AppCompatActivity {
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+=======
 
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
+            if (getArguments().getInt(ARG_SECTION_NUMBER) == 2) {
 
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position);
-        }
+                if (getArguments().getInt(ARG_SECTION_NUMBER) == 2) {
+                    currentPage = 2;
 
-        @Override
-        public int getCount() {
-            // Show 4 total pages.
-            return NUM_ITEMS;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "SECTION 1";
-                case 1:
-                    return "SECTION 2";
-                case 2:
-                    return "SECTION 3";
-                case 3:
-                    return "SECTION 4";
+                    imageView.setImageResource(R.drawable.arc_court2);
+                }
+                if (getArguments().getInt(ARG_SECTION_NUMBER) == 3) {
+                    currentPage = 3;
+                    imageView.setImageResource(R.drawable.top);
+                }
+                return rootView;
             }
-            return null;
+
+        return rootView;
         }
-
-
     }
-}
+
+
+//passing listener object to button
+
+
+        /**
+         * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+         * one of the sections/tabs/pages.
+         */
+        public class SectionsPagerAdapter extends FragmentPagerAdapter {
+>>>>>>> Stashed changes
+
+            public SectionsPagerAdapter(FragmentManager fm) {
+                super(fm);
+            }
+
+            @Override
+            public Fragment getItem(int position) {
+                // getItem is called to instantiate the fragment for the given page.
+                // Return a PlaceholderFragment (defined as a static inner class below).
+                return PlaceholderFragment.newInstance(position);
+            }
+
+            @Override
+            public int getCount() {
+                // Show 4 total pages.
+                return NUM_ITEMS;
+            }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position) {
+                    case 0:
+                        return "SECTION 1";
+                    case 1:
+                        return "SECTION 2";
+                    case 2:
+                        return "SECTION 3";
+                    case 3:
+                        return "SECTION 4";
+                }
+                return null;
+            }
+
+
+        }
+    }
+
+
+
+

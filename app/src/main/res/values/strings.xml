@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MuscleSloth</string>
     <string name="arc_floor_plan">Arc Floor Plan</string>
+    <string name="tread_mill">Treadmill</string>
+    <string name="exercise_bike">Exercise Bike</string>
+    <string name="bench_press">Bench Press</string>
     <string name="manage_work">Manage Workouts</string>
     <string name="image_desc">Main Logo Image</string>
     <string name="title">Muscle Sloth</string>
