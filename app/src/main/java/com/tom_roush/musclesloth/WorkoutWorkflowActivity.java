@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
@@ -89,6 +88,8 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
 
         _listview.setAdapter(workoutAdapter);
 
+	    findViewById(R.id.toolbar).setVisibility(View.VISIBLE);
+
         _nameText.setText(_workout.toString());
         _nameText.setVisibility(View.VISIBLE);
         _nameText.setFocusable(false);
@@ -141,8 +142,8 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         _listview.setAdapter(workoutAdapter);
 
         // Title bar
-        _nameText.setVisibility(View.INVISIBLE);
-        getSupportActionBar().setTitle(R.string.manage_work);
+        _nameText.setVisibility(View.GONE);
+	    findViewById(R.id.toolbar).setVisibility(View.GONE);
 
         // Find times button
         _findTimesBtn.setVisibility(View.INVISIBLE);

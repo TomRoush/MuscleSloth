@@ -3,7 +3,6 @@ package com.tom_roush.musclesloth;
 import android.content.Intent;
 import android.graphics.Matrix;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -58,15 +57,15 @@ public class FloorPlan extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //              Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                //                     .setAction("Action", null).show();
-                mViewPager.setCurrentItem(0);
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //              Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                //                     .setAction("Action", null).show();
+//                mViewPager.setCurrentItem(0);
+//            }
+//        });
     }
 
     public void hackyWork(View v) {
