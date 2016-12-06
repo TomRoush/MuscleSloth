@@ -47,7 +47,6 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         _vswitsearch = (ViewSwitcher) findViewById(R.id.vswitsearch);
 
         //setSupportActionBar(_toolbar);
-
     }
 
     @Override

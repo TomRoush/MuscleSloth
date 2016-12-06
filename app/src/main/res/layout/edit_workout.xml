@@ -81,6 +81,8 @@
                 android:textSize="32sp"
                 android:textColor="#FFFFFF"
                 android:id="@+id/nameText"
+                android:drawableLeft="@drawable/pencil"
+                android:drawablePadding="5dp"
                 android:background="?attr/colorPrimary"/>
         </ViewSwitcher>
 
