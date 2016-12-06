@@ -215,6 +215,16 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Takes us to the new mahcine page.
+     * @param w the view that triggers the thing
+     */
+    public void createNewMachine(View w)
+    {
+        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivity(intent);
+    }
+
     private void updateWorkout(Workout updatedWorkout)
     {
         _workout.setName(_nameText.getText().toString());
