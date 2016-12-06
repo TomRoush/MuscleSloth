@@ -8,7 +8,7 @@
 
     tools:context="com.tom_roush.musclesloth.WorkoutWorkflowActivity">
 
-    <ListView
+    <ViewSwitcher
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/toolbar"
@@ -16,7 +16,24 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:id="@+id/listview"/>
+        android:id="@+id/vswitlist">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:id="@+id/listview"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:text="@string/no_entries"
+            android:textSize="32sp"
+            android:id="@+id/no_entries_txt" />
+    </ViewSwitcher>
 
     <ViewSwitcher
         android:layout_width="wrap_content"
@@ -33,12 +50,12 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:id="@+id/button"
-            android:onClick="createNewWorkoutOrMachine"
+            android:onClick="createNewWorkout"
             android:layout_marginRight="25dp"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="25dp" />
         <Button
-            android:text="@string/new_symbol"
+            android:text="-"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -101,7 +118,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="19dp"
-        android:layout_below="@+id/listview"
+        android:layout_below="@+id/vswitlist"
         android:onClick="findTimeOnClick"/>
 
 </RelativeLayout>
