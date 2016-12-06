@@ -24,6 +24,8 @@ public class SearchResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
 
+	    String query = getIntent().getStringExtra("query");
+
         String[] free = new String[]{"Flat Bench", "Incline Bench", "Decline Bench"};
         ArrayList<String> freeList = new ArrayList<>();
         freeList.addAll(Arrays.asList(free));

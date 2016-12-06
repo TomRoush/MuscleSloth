@@ -1,16 +1,12 @@
 package com.tom_roush.musclesloth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,12 +48,21 @@ public class SearchActivity extends AppCompatActivity {
         listAdapter = new ArrayAdapter<String>(SearchActivity.this, R.layout.simplerow, cardioList);
         mainListView = (ListView) findViewById(R.id.cardioListView);
         mainListView.setAdapter(listAdapter);
-    }
 
-    public void buttonClickFunction(View v)
-    {
-        Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
-        this.startActivity(intent);
-    }
+	    final SearchView searchView = (SearchView)findViewById(R.id.searchview);
+	    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+		    @Override
+		    public boolean onQueryTextSubmit(String query) {
+			    Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
+			    intent.putExtra("query", query);
+				startActivity(intent);
+			    return false;
+		    }
 
+		    @Override
+		    public boolean onQueryTextChange(String newText) {
+			    return false;
+		    }
+	    });
+    }
 }

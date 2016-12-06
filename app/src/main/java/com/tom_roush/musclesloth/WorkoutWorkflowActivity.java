@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
@@ -28,7 +27,6 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
     private ArrayList<Workout> _workouts;
     private ListView _listview;
     private Workout _workout;
-    private Toolbar _toolbar;
     private EditText _nameText;
     private Button _findTimesBtn;
     private TextView _titleView;
@@ -43,7 +41,6 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
 
         // get the list view item for binding purposes
         _listview = (ListView) findViewById(R.id.listview);
-        _toolbar = (Toolbar) findViewById(R.id.toolbar);
         _nameText = (EditText) findViewById(R.id.nameText);
         _findTimesBtn = (Button) findViewById(R.id.findTimesBtn);
         _titleView = (TextView) findViewById(R.id.titleBar);
@@ -51,14 +48,14 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         _vswitsearch = (ViewSwitcher) findViewById(R.id.vswitsearch);
         _searchView = (SearchView) findViewById(R.id.searchview);
 
-        setSupportActionBar(_toolbar);
-
+	    String query = getIntent().getStringExtra("query"); // is previous search still active?
 
         // set search view stuff
         final SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+	            intent.putExtra("query", query);
                 startActivity(intent);
                 return true;
             }
