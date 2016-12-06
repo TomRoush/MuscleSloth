@@ -5,6 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +20,6 @@ public class SearchActivity extends AppCompatActivity {
 
     private ListView mainListView;
     private ArrayAdapter<String> listAdapter;
-
     /**
      * Called when the activity is first created.
      */
@@ -47,6 +52,12 @@ public class SearchActivity extends AppCompatActivity {
         listAdapter = new ArrayAdapter<String>(SearchActivity.this, R.layout.simplerow, cardioList);
         mainListView = (ListView) findViewById(R.id.cardioListView);
         mainListView.setAdapter(listAdapter);
+    }
+
+    public void buttonClickFunction(View v)
+    {
+        Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
+        this.startActivity(intent);
     }
 
 }
