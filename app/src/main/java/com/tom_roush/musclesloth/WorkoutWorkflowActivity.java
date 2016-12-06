@@ -32,6 +32,10 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
     private TextView _titleView;
     private ViewSwitcher _vswitcher;
     private ViewSwitcher _vswitsearch;
+    private ViewSwitcher _vswitlist;
+
+    private boolean _currently_list_view;
+    private boolean _workouts_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,10 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         _titleView = (TextView) findViewById(R.id.titleBar);
         _vswitcher = (ViewSwitcher) findViewById(R.id.vswitcher);
         _vswitsearch = (ViewSwitcher) findViewById(R.id.vswitsearch);
+        _vswitlist = (ViewSwitcher) findViewById(R.id.vswitlist);
 
+        _currently_list_view = true;    // default is the list view
+        _workouts_view = true;          // default is the manageing workouts
         //setSupportActionBar(_toolbar);
     }
 
@@ -60,6 +67,9 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
 
     private void updateViewToWorkout()
     {
+        _workouts_view = false;
+        workout_list_callback();
+
         // set up the onclick listener
         _listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -105,6 +115,9 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
 
     private void updateViewToManage()
     {
+        _workouts_view = true;
+        workout_list_callback();
+
         if(_workout != null) updateWorkout(_workout);
         _workout = null;
         // set up the onclick listener
@@ -150,6 +163,7 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         // Start with manage view
         if(_workout == null) updateViewToManage();
         else updateViewToWorkout();
+
         _vswitcher.showNext();
         _vswitsearch.showNext();
     }
@@ -183,6 +197,9 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
 
             // check if it is null
             if(tempWorkouts != null) {_workouts = tempWorkouts;}
+
+            // run the callback in order to determine if we need to choose the textview or the listview
+            workout_list_callback();    // default view is the listview
         }
     }
 
@@ -206,7 +223,8 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
     {
         if(_workout == null) {
             _workout = new Workout("New Workout", _workouts.size());
-            _workouts.add(_workout);
+            //_workouts.add(_workout);
+            arrListAdd(_workout);
             updateViewToWorkout();
         }
     }
@@ -231,4 +249,24 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
 		Intent intent = new Intent(getApplicationContext(), SchedulingPrefsActivity.class);
 		startActivity(intent);
 	}
+
+    /**
+     * Switches the textView and listview
+     */
+    private void workout_list_callback()
+    {
+        if ((_workouts_view && ((_currently_list_view && _workouts.isEmpty()) ||
+            (!_currently_list_view && !(_workouts.isEmpty())))) ||
+            (!_workouts_view && ((_currently_list_view && _workout.getMachines().isEmpty()) ||
+            !_currently_list_view && !_workout.getMachines().isEmpty()) ))
+        {
+            _vswitlist.showNext();
+            _currently_list_view = !_currently_list_view;
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////
+    //////////////////////ARRAYLISTSTUFF/////////////////////////////
+    /////////////////////////////////////////////////////////////////
+    private void arrListAdd(Workout w) {workout_list_callback(); _workouts.add(w);}
 }
