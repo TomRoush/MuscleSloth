@@ -151,7 +151,7 @@ public class FloorPlan extends AppCompatActivity {
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
                     SGD.onTouchEvent(motionEvent);
-                    return true;
+                    return false;
                 }
             });
 
