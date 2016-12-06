@@ -1,10 +1,10 @@
 package com.tom_roush.musclesloth;
 
-<<<<<<< Updated upstream
+
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-=======
+
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +21,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 
->>>>>>> Stashed changes
+
 
 public class MachinePageActivity extends AppCompatActivity {
 
@@ -31,8 +31,7 @@ public class MachinePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_machine_page);
-<<<<<<< Updated upstream
-=======
+
 
         Resources res = getResources();
 
@@ -58,9 +57,3 @@ public class MachinePageActivity extends AppCompatActivity {
 
 }
 
->>>>>>> Stashed changes
-
-	    ActionBar actionBar = getSupportActionBar();
-		actionBar.setTitle(R.string.gym_one);
-    }
-}
