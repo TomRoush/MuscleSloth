@@ -1,10 +1,12 @@
 package com.tom_roush.musclesloth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +16,6 @@ public class SearchActivity extends AppCompatActivity {
 
     private ListView mainListView;
     private ArrayAdapter<String> listAdapter;
-
     /**
      * Called when the activity is first created.
      */
@@ -47,6 +48,21 @@ public class SearchActivity extends AppCompatActivity {
         listAdapter = new ArrayAdapter<String>(SearchActivity.this, R.layout.simplerow, cardioList);
         mainListView = (ListView) findViewById(R.id.cardioListView);
         mainListView.setAdapter(listAdapter);
-    }
 
+	    final SearchView searchView = (SearchView)findViewById(R.id.searchview);
+	    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+		    @Override
+		    public boolean onQueryTextSubmit(String query) {
+			    Intent intent = new Intent(getApplicationContext(), SearchResultsActivity.class);
+			    intent.putExtra("query", query);
+				startActivity(intent);
+			    return false;
+		    }
+
+		    @Override
+		    public boolean onQueryTextChange(String newText) {
+			    return false;
+		    }
+	    });
+    }
 }
