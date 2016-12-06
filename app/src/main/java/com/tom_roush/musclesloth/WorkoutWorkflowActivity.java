@@ -34,7 +34,6 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
     private TextView _titleView;
     private ViewSwitcher _vswitcher;
     private ViewSwitcher _vswitsearch;
-    private SearchView _searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,23 +48,9 @@ public class WorkoutWorkflowActivity extends AppCompatActivity {
         _titleView = (TextView) findViewById(R.id.titleBar);
         _vswitcher = (ViewSwitcher) findViewById(R.id.vswitcher);
         _vswitsearch = (ViewSwitcher) findViewById(R.id.vswitsearch);
-        _searchView = (SearchView) findViewById(R.id.searchview);
 
-        setSupportActionBar(_toolbar);
+        //setSupportActionBar(_toolbar);
 
-
-        // set search view stuff
-        final SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
-                startActivity(intent);
-                return true;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {return true;}
-        };
-        _searchView.setOnQueryTextListener(queryTextListener);
     }
 
     @Override
