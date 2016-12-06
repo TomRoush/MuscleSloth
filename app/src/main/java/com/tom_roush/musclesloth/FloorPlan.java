@@ -1,15 +1,14 @@
 package com.tom_roush.musclesloth;
 
 import android.content.Intent;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-<<<<<<< Updated upstream
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
-=======
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -21,12 +20,13 @@ import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
->>>>>>> Stashed changes
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -85,10 +85,6 @@ public class FloorPlan extends AppCompatActivity {
         startActivity(new Intent(this, (currentPage == 1 || currentPage == 3 ? RoomPageActivity.class : MachinePageActivity.class)));
     }
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -129,6 +125,12 @@ public class FloorPlan extends AppCompatActivity {
          * The fragment argument representing the section number for this
          * fragment.
          */
+
+        ImageView imgZoom;
+        Matrix matrix = new Matrix();
+        Float scale = 1f;
+        ScaleGestureDetector SGD;
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
@@ -146,10 +148,6 @@ public class FloorPlan extends AppCompatActivity {
             return fragment;
         }
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -158,28 +156,52 @@ public class FloorPlan extends AppCompatActivity {
             //    textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             textView.setText("Floor " + getArguments().getInt(ARG_SECTION_NUMBER));
 
-            ImageView imageView = (ImageView) rootView.findViewById(R.id.room_image);
-
+            //ImageView imageView = (ImageView) rootView.findViewById(R.id.room_image);
+	        imgZoom = (ImageView) rootView.findViewById(R.id.room_image);
+            SGD = new ScaleGestureDetector(rootView.getContext(), new ScaleListener());
+            imgZoom.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    SGD.onTouchEvent(motionEvent);
+                    return true;
+                }
+            });
 
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 0) {
                 currentPage = 0;
-                imageView.setImageResource(R.drawable.lower_level);
+                imgZoom.setImageResource(R.drawable.lower_level);
             }
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
                 currentPage = 1;
-                imageView.setImageResource(R.drawable.arc_court);
+                imgZoom.setImageResource(R.drawable.arc_court);
             }
-<<<<<<< Updated upstream
+
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 2){
                 currentPage = 2;
-                imageView.setImageResource(R.drawable.arc_court2);
+                imgZoom.setImageResource(R.drawable.arc_court2);
             }
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 3){
                 currentPage = 3;
-                imageView.setImageResource(R.drawable.top);
+                imgZoom.setImageResource(R.drawable.top);
             }
             return rootView;
         }
+
+        private class ScaleListener extends ScaleGestureDetector.
+                SimpleOnScaleGestureListener {
+            @Override
+            public boolean onScale(ScaleGestureDetector detector) {
+                scale *= detector.getScaleFactor();
+                scale = Math.max(0.1f, Math.min(scale, 1f));
+                matrix.setScale(scale, scale);
+                imgZoom.setImageMatrix(matrix);
+                return true;
+            }
+        }
+        /*public boolean onTouchEvent(MotionEvent ev) {
+            SGD.onTouchEvent(ev);
+            return true;
+        }*/
     }
 
     /**
@@ -187,7 +209,7 @@ public class FloorPlan extends AppCompatActivity {
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-=======
+
 
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 2) {
 
@@ -216,7 +238,7 @@ public class FloorPlan extends AppCompatActivity {
          * one of the sections/tabs/pages.
          */
         public class SectionsPagerAdapter extends FragmentPagerAdapter {
->>>>>>> Stashed changes
+
 
             public SectionsPagerAdapter(FragmentManager fm) {
                 super(fm);
