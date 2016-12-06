@@ -9,17 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -29,7 +18,6 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -198,35 +186,11 @@ public class FloorPlan extends AppCompatActivity {
                 return true;
             }
         }
+
         /*public boolean onTouchEvent(MotionEvent ev) {
             SGD.onTouchEvent(ev);
             return true;
         }*/
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-
-            if (getArguments().getInt(ARG_SECTION_NUMBER) == 2) {
-
-                if (getArguments().getInt(ARG_SECTION_NUMBER) == 2) {
-                    currentPage = 2;
-
-                    imageView.setImageResource(R.drawable.arc_court2);
-                }
-                if (getArguments().getInt(ARG_SECTION_NUMBER) == 3) {
-                    currentPage = 3;
-                    imageView.setImageResource(R.drawable.top);
-                }
-                return rootView;
-            }
-
-        return rootView;
-        }
     }
 
 
